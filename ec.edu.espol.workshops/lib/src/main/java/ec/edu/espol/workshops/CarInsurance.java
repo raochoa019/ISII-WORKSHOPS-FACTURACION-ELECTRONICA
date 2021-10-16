@@ -42,4 +42,25 @@ public class CarInsurance {
 		}
 	}
 	
+	public int calculatedPremiumCar() {
+		int premiumCar = 500;
+		
+		if(this.getGenre() == 'M' && this.getMaritalStatus()=="NOT_MARRIED" && this.getAge() < 25) {
+			premiumCar += 1500;
+		}
+		
+		if(this.getGenre() =='F' || this.getMaritalStatus()=="MARRIED") {
+			premiumCar -= 200;
+		}
+		
+		if(this.getAge() >= 45 && this.getAge() < 65) {
+			premiumCar -= 100;
+		}
+		
+		if(this.getAge() > 80) {
+			return -1;
+		}
+		
+		return premiumCar;
+	}
 }
