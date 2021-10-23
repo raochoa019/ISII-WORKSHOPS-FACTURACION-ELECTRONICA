@@ -1,13 +1,27 @@
 package ec.edu.espol.workshops;
 
-public class CarInsurance {
+import java.util.Locale;
 
+/**
+*
+* @authors  Facturacion
+* @param age
+*
+*/
+public class CarInsurance {
 	private Integer age;
 	private char genre;
 	private String maritalStatus;
+	private static final String generoF = "F";
+	private static final String generoM = "M";
+	private static final String casado = "MARRIED";
+	private static final String soltero = "NOT MARRIED";
+	private static final int edadMax = 80;
+	private transient int premiumCar = 500; 
 	
-	public CarInsurance() {}
-	
+	/**
+	 * @param age, genre, maritalStatus
+	 */
 	public CarInsurance(Integer age, char genre, String maritalStatus){
 		this.age = age;
 		this.genre = genre;
@@ -27,8 +41,8 @@ public class CarInsurance {
 	} 
 	
 	public void setGenre(String genre) {
-		if (genre.toUpperCase().equals("F") || genre.toUpperCase().equals("M")) {
-			this.genre =  genre.toUpperCase().charAt(0); 			
+		if (generoF.equalsIgnoreCase(genre) || generoM.equalsIgnoreCase(genre)) {
+			this.genre =  genre.toUpperCase(Locale.getDefault()).charAt(0); 			
 		}
 	}
 	
@@ -37,19 +51,21 @@ public class CarInsurance {
 	} 
 	
 	public void setMaritalStatus(String maritalStatus) {
-		if(maritalStatus.toUpperCase().equals("MARRIED") || maritalStatus.toUpperCase().equals("NOT_MARRIED") ) {
-			this.maritalStatus = maritalStatus.toUpperCase();
+		if(casado.equalsIgnoreCase(maritalStatus) || soltero.equalsIgnoreCase(maritalStatus) ) {
+			this.maritalStatus = maritalStatus.toUpperCase(Locale.getDefault());
 		}
 	}
 	
+	/**
+	 * 
+	 * @return premiumCar
+	 */
 	public int calculatedPremiumCar() {
-		int premiumCar = 500;
-		
-		if(this.getGenre() == 'M' && this.getMaritalStatus()=="NOT_MARRIED" && this.getAge() < 25) {
+		if(this.getGenre() =='M' && soltero.equals(this.getMaritalStatus()) && this.getAge() < 25) {
 			premiumCar += 1500;
 		}
 		
-		if(this.getGenre() =='F' || this.getMaritalStatus()=="MARRIED") {
+		if(this.getGenre() =='F' || casado.equals(this.getMaritalStatus())) {
 			premiumCar -= 200;
 		}
 		
@@ -57,7 +73,7 @@ public class CarInsurance {
 			premiumCar -= 100;
 		}
 		
-		if(this.getAge() > 80) {
+		if(this.getAge() > edadMax) {
 			return -1;
 		}
 		
