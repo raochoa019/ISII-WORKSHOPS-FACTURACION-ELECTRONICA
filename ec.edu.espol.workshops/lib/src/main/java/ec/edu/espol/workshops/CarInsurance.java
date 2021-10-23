@@ -1,5 +1,7 @@
 package ec.edu.espol.workshops;
 
+import java.util.Locale;
+
 public class CarInsurance {
 
 	private Integer age;
@@ -22,13 +24,13 @@ public class CarInsurance {
 		this.age = age;
 	}
 	
-	public char getGenre() {
+	public Character getGenre() {
 		return this.genre;
 	} 
 	
 	public void setGenre(String genre) {
-		if (genre.toUpperCase().equals("F") || genre.toUpperCase().equals("M")) {
-			this.genre =  genre.toUpperCase().charAt(0); 			
+		if (genre.toUpperCase(Locale.getDefault()).equals("F") || genre.toUpperCase(Locale.getDefault()).equals("M")) {
+			this.genre =  genre.toUpperCase(Locale.getDefault()).charAt(0); 			
 		}
 	}
 	
@@ -37,19 +39,20 @@ public class CarInsurance {
 	} 
 	
 	public void setMaritalStatus(String maritalStatus) {
-		if(maritalStatus.toUpperCase().equals("MARRIED") || maritalStatus.toUpperCase().equals("NOT_MARRIED") ) {
-			this.maritalStatus = maritalStatus.toUpperCase();
+		
+		if(maritalStatus.toUpperCase(Locale.getDefault()).equals("MARRIED") || maritalStatus.toUpperCase(Locale.getDefault()).equals("NOT_MARRIED") ) {
+			this.maritalStatus = maritalStatus.toUpperCase(Locale.getDefault());
 		}
 	}
 	
 	public int calculatedPremiumCar() {
 		int premiumCar = 500;
 		
-		if(this.getGenre() == 'M' && this.getMaritalStatus()=="NOT_MARRIED" && this.getAge() < 25) {
+		if(this.getGenre().equals('M') && this.getMaritalStatus().equals("NOT_MARRIED") && this.getAge() < 25) {
 			premiumCar += 1500;
 		}
 		
-		if(this.getGenre() =='F' || this.getMaritalStatus()=="MARRIED") {
+		if(this.getGenre().equals('F') || this.getMaritalStatus().equals("MARRIED")) {
 			premiumCar -= 200;
 		}
 		
