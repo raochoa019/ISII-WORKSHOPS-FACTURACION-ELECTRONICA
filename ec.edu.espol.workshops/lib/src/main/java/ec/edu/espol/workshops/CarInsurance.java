@@ -47,7 +47,7 @@ public class CarInsurance {
     this.age = age;
   }
 
-  public char getGenre() {
+  public Character getGenre() {
     return this.genre;
   }
   
@@ -60,7 +60,7 @@ public class CarInsurance {
   
   public void setGenre(String genre) {
 	if (generoF.equalsIgnoreCase(genre) || generoM.equalsIgnoreCase(genre)) {
-      this.genre = genre.toUpperCase().charAt(0);
+      this.genre = genre.toUpperCase(Locale.getDefault()).charAt(0);
     }
   }
 
@@ -91,11 +91,11 @@ public class CarInsurance {
   public int calculatedPremiumCar() {
     int premiumCar = 500;
 
-    if (this.getGenre() =='M' && soltero.equals(this.getMaritalStatus()) && this.getAge() < 25) {
+    if (this.getGenre().equals('M') && soltero.equals(this.getMaritalStatus()) && this.getAge() < 25) {
       premiumCar += 1500;
     }
 
-    if (this.getGenre() =='F' || casado.equals(this.getMaritalStatus())) {
+    if (this.getGenre().equals('F') || casado.equals(this.getMaritalStatus())) {
       premiumCar -= 200;
     }
 
@@ -109,4 +109,3 @@ public class CarInsurance {
 
     return premiumCar;
   }
-}
