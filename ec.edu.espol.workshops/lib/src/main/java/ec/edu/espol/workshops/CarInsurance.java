@@ -1,3 +1,5 @@
+package ec.edu.espol.workshops;
+
 import java.util.Locale;
 
 /**
@@ -21,6 +23,15 @@ public class CarInsurance {
 
   
   /**
+   * Constructor default
+   * 
+   * */
+  
+  public CarInsurance() {
+	  
+  }
+  
+  /**
    * Constructor que define el seguro del auto.
    *
    * @param age Parametro de edad
@@ -30,19 +41,7 @@ public class CarInsurance {
    * @param maritalStatus Parametro del estado civil
    *
    */
-  
-  public CarInsurance(Integer age) {
-	this.setAge(age);
-	this.genre = '\0';
-	this.maritalStatus = "";
-  }
-  
-  public CarInsurance(Integer age, char genre) {
-	this.setAge(age);
-	this.setGenre(genre);
-	this.maritalStatus = "";
-  }
-  
+    
   public CarInsurance(Integer age, char genre, String maritalStatus) {
 	this.setAge(age);
     this.genre = genre;

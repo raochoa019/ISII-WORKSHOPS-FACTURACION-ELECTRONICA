@@ -11,78 +11,38 @@ public class StepsDefs {
 	 private String maritalStatus;
 	 private Character genre;
 	 private int answer ;
+	 public CarInsurance calculated;
+
 	 
-	 @Given("age is 22")
-	 public void age_is_22() {
-		 this.age = 22;
-	 }
-	 
-	 @Given("age is 50")
-	 public void age_is_50() {
-		 this.age = 50;
-	 }
-	 
-	 @Given("age is 85")
-	 public void age_is_85() {
-		 this.age = 85;
-	 }
-	 
-	 @Given("genre is 'M' ")
-	 public void genre_is_M() {
+	 @Given("age is {int}")
+	 public void age_is(Integer age){
+		 this.age = age;
 		 this.genre = 'M';
-	 }
-	 
-	 @Given("genre is 'F' ")
-	 public void genre_is_F() {
-		 this.genre = 'F';
-	 }
-	 
-	 @Given("marital status is 'MARRIED' ")
-	 public void marital_status_is_MARRIED() {
-		 this.maritalStatus = "MARRIED";
-	 }
-	 
-	 @Given("marital status is 'NOT MARRIED' ")
-	 public void marital_status_is_NOT_MARRIED() {
 		 this.maritalStatus = "NOT MARRIED";
 	 }
 	 
-	 @Given("age is {int}")
-	 public void age_is(int age) {
+	 @Given("marital status is {string}, genre is {string}, age is {int}")
+	 public void marital_status_is_genre_is_age_is(String maritalStatus,String genre,Integer age) {
+		 this.maritalStatus = maritalStatus;
+		 this.genre = genre.charAt(0);
+		 this.age = age;
+	 }
+	 	 
+	 @Given("genre is {string}, age is {int}")
+	 public void genre_is_age_is(String genre,Integer age) {
+		 this.genre = genre.charAt(0);
 		 this.age = age;
 	 }
 	 
-	 @Given("genre is {Character}")
-	 public void genre_is(Character genre) {
-		 this.genre = genre;
-	 }
-	 
-	 @Given("marital status is {String}")
-	 public void marital_status_is(String maritalStatus) {
-		 this.maritalStatus = maritalStatus;
-	 }
-	 
-	 @When("calculate the insurance premium 1")
-	 public void calculate_the_insurance_premium_1() {
-		 CarInsurance calculated = new CarInsurance(this.age);
-		 this.answer = calculated.calculatedPremiumCar(); 
-	 }
-	 
-	 @When("calculate the insurance premium 2")
-	 public void calculate_the_insurance_premium_2() {
-		 CarInsurance calculated = new CarInsurance(this.age,this.genre);
-		 this.answer = calculated.calculatedPremiumCar();
-	 }
-	 
-	 @When("calculate the insurance premium 3")
-	 public void calculate_the_insurance_premium_3() {
-		 CarInsurance calculated = new CarInsurance(this.age,this.genre,this.maritalStatus);
+	 @When("calculate the insurance premium")
+	 public void calculate_the_insurance_premium() {
+		 calculated = new CarInsurance(this.age,this.genre,this.maritalStatus);
 		 this.answer = calculated.calculatedPremiumCar();
 	 }
 	 
 	 @Then("I should be told {int}")
-	 public void I_should_be_told(int expectedAnswer) {
-		 assertEquals(expectedAnswer, this.answer);
+	 public void I_should_be_told(int expectedAnswer){
+		 assertEquals(expectedAnswer,answer);
 	 }
 	 
 	 
