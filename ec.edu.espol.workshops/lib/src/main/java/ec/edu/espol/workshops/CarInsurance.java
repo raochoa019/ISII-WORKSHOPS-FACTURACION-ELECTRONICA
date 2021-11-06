@@ -1,5 +1,3 @@
-package ec.edu.espol.workshops;
-
 import java.util.Locale;
 
 /**
@@ -12,7 +10,7 @@ import java.util.Locale;
 public class CarInsurance {
 
   private Integer age;
-  private char genre;
+  private Character genre;
   private String maritalStatus;
   private static final String generoF = "F";
   private static final String generoM = "M";
@@ -33,11 +31,25 @@ public class CarInsurance {
    *
    */
   
+  public CarInsurance(Integer age) {
+	this.setAge(age);
+	this.genre = '\0';
+	this.maritalStatus = "";
+  }
+  
+  public CarInsurance(Integer age, char genre) {
+	this.setAge(age);
+	this.setGenre(genre);
+	this.maritalStatus = "";
+  }
+  
   public CarInsurance(Integer age, char genre, String maritalStatus) {
-    this.age = age;
+	this.setAge(age);
     this.genre = genre;
     this.maritalStatus = maritalStatus;
   }
+  
+  
 
   public int getAge() {
     return this.age;
@@ -58,9 +70,9 @@ public class CarInsurance {
    *
    */
   
-  public void setGenre(String genre) {
-	if (generoF.equalsIgnoreCase(genre) || generoM.equalsIgnoreCase(genre)) {
-      this.genre = genre.toUpperCase(Locale.getDefault()).charAt(0);
+  public void setGenre(Character genre) {
+	if (generoF.equalsIgnoreCase(genre.toString()) || generoM.equalsIgnoreCase(genre.toString())) {
+      this.genre = genre.toString().toUpperCase(Locale.getDefault()).charAt(0);
     }
   }
 
@@ -109,3 +121,4 @@ public class CarInsurance {
 
     return premiumCar;
   }
+}
