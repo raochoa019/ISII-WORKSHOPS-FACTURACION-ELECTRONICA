@@ -79,6 +79,46 @@ class CarInsuranceTest {
 	}
 	
 	
+	@Test
+	void TC1() {
+		int esperado = 300;
+		CarInsurance c = new CarInsurance(25,'M',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void TC2() {
+		int esperado = -1;
+		CarInsurance c = new CarInsurance(15,'F',"NOT MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void TC3() {
+		int esperado = -1;
+		CarInsurance c = new CarInsurance(85,'M',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void TC4() {
+		int esperado = -1;
+		CarInsurance c = new CarInsurance(30,'B',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void TC5() {
+		int esperado = -1;
+		CarInsurance c = new CarInsurance(20,'F',"SINGLE");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
 	
 
 }
