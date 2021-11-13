@@ -72,7 +72,7 @@ class CarInsuranceTest {
 	
 	@Test
 	void test8CalculatedPremiumCar() {
-		int esperado = 300;
+		int esperado = -1;
 		CarInsurance c = new CarInsurance(35,'H',"married");
 		int estado = c.calculatedPremiumCar();
 		assertEquals(esperado,estado,0); 

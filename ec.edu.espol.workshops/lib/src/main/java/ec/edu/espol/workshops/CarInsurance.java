@@ -19,6 +19,7 @@ public class CarInsurance {
   private static final String casado = "MARRIED";
   private static final String soltero = "NOT MARRIED";
   private static final int edadMax = 80;
+  private static final int edadMin = 18;
   private transient int premiumCar = 500;
 
   
@@ -61,6 +62,8 @@ public class CarInsurance {
   public void setGenre(Character genre) {
 	if (generoF.equalsIgnoreCase(genre.toString()) || generoM.equalsIgnoreCase(genre.toString())) {
       this.genre = genre.toString().toUpperCase(Locale.getDefault()).charAt(0);
+    }else {
+      this.genre ='\0';
     }
   }
 
@@ -78,6 +81,8 @@ public class CarInsurance {
   public void setMaritalStatus(String maritalStatus) {
     if (casado.equalsIgnoreCase(maritalStatus) || soltero.equalsIgnoreCase(maritalStatus)) {
       this.maritalStatus = maritalStatus.toUpperCase(Locale.getDefault());
+    }else {
+      this.maritalStatus = "";
     }
   }
   
@@ -102,7 +107,7 @@ public class CarInsurance {
       premiumCar -= 100;
     }
 
-    if (this.getAge() > edadMax) {
+    if (this.getAge() > edadMax || this.getAge()<edadMin || this.getGenre().equals('\0') || this.getMaritalStatus().equals("")) {
       return -1;
     }
 
