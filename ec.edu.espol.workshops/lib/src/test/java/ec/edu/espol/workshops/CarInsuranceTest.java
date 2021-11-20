@@ -119,6 +119,76 @@ class CarInsuranceTest {
 		assertEquals(esperado,valor,0);
 	}
 	
+	@Test
+	void boundaryTC1() {
+		int esperado = -1;
+		CarInsurance c = new CarInsurance(17,'M',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
 	
-
+	@Test
+	void boundaryTC2() {
+		int esperado = 2000;
+		CarInsurance c = new CarInsurance(18,'M',"NOT MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC3() {
+		int esperado = 2000;
+		CarInsurance c = new CarInsurance(24,'M',"NOT MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC4() {
+		int esperado = 500;
+		CarInsurance c = new CarInsurance(25,'M',"NOT MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC5() {
+		int esperado = 300;
+		CarInsurance c = new CarInsurance(44,'F',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC6() {
+		int esperado = 200;
+		CarInsurance c = new CarInsurance(45,'F',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC7() {
+		int esperado = 500;
+		CarInsurance c = new CarInsurance(79,'M',"NOT MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC8() {
+		int esperado = 300;
+		CarInsurance c = new CarInsurance(80,'F',"NOT MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
+	@Test
+	void boundaryTC9() {
+		int esperado = -1;
+		CarInsurance c = new CarInsurance(81,'M',"MARRIED");
+		int valor = c.calculatedPremiumCar(); 
+		assertEquals(esperado,valor,0);
+	}
+	
 }
