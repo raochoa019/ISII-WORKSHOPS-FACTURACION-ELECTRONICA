@@ -19,7 +19,7 @@ public class CarInsurance {
   private static final String casado = "MARRIED";
   private static final String soltero = "NOT MARRIED";
   private static final int edadMax = 80;
-  private transient int premiumCar = 500;
+  private transient int premiumCar = 600;
 
   
   /**
