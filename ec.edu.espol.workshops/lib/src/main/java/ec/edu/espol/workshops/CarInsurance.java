@@ -101,6 +101,14 @@ public class CarInsurance {
     if (this.getAge() >= 45 && this.getAge() < 65) {
       premiumCar -= 100;
     }
+    
+    if (casado.equals(this.getMaritalStatus()) && (this.getAge() > 30 && this.getAge() < 60)){
+    	premiumCar -= 100;
+    }
+    
+    if (this.getGenre().equals('F') && soltero.equals(this.getMaritalStatus()) && this.getAge() > 60) {
+    	premiumCar -= 50;
+    }    
 
     if (this.getAge() > edadMax) {
       return -1;
